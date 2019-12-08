@@ -40,7 +40,7 @@ ForEach($file in $files){
         }
         Write-Host "Moving $file to ph_scene"
         Move-Item -Path $file -Destination .\ph_scene
-	}elseif ($SELAIH -ne $null){
+	}elseif ($SELAIS -ne $null){
         if( -Not (Test-Path -Path .\ai_scene ) )
         {
             Write-Host "Creating AI Syoujyo Scene Folder"
@@ -55,7 +55,7 @@ ForEach($file in $files){
             New-Item -ItemType directory -Path .\ai_clothes
         }
         Write-Host "Moving $file to ai_clothes"
-        Move-Item -Path $file -Destination .\ai_scene
+        Move-Item -Path $file -Destination .\ai_clothes
 	}elseif ($SELAIH -ne $null){
         if( -Not (Test-Path -Path .\ai_house ) )
         {
