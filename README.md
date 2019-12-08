@@ -18,6 +18,11 @@ Sort usermade content made for Illusion Games
 - Emotion Creators Poses
 - Emotion Creators Maps
 - Emotion Creators Scenes
+- AI*Girls Female Cards
+- AI*Girls Male Cards
+- AI*Girls Studio Scenes
+- AI*Girls Studio Houses (Cannot sort by sizes)
+- AI*Girls Studio Clothings (Cannot sort by gender)
 
 ## How to use?
 Just place the exe or PS1 in the folder where the images are located and run, it'll sort it into folders based on game and type of content.
