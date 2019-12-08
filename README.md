@@ -18,6 +18,8 @@ Sort usermade content made for Illusion Games
 - Emotion Creators Poses
 - Emotion Creators Maps
 - Emotion Creators Scenes
+
+(Added By HENREX)
 - AI*Girls Female Cards
 - AI*Girls Male Cards
 - AI*Girls Studio Scenes
