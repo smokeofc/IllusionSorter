@@ -1,4 +1,4 @@
-﻿Set-PSDebug -Off
+Set-PSDebug -Off
 
 $files = Get-ChildItem '*.png'
 
@@ -19,7 +19,11 @@ ForEach($file in $files){
 	$SELKKG = Select-String -Path $file -Pattern "sex"
     $SELPRF = Select-String -Path $file -Pattern "PremiumResortCharaFemale"
     $SELPRM = Select-String -Path $file -Pattern "PremiumResortCharaMale"
-
+	$SELAIC = Select-String -Path $file -Pattern "AIS_Chara"
+	$SELAIS = Select-String -Path $file -Pattern "StudioNEOV2"
+	$SELAIH = Select-String -Path $file -Pattern "AIS_Housing"
+	$SELAIO = Select-String -Path $file -Pattern "AIS_Clothes"
+	
 	if ($SELECS -ne $null){
         if( -Not (Test-Path -Path .\ec_scene ) )
         {
@@ -36,6 +40,30 @@ ForEach($file in $files){
         }
         Write-Host "Moving $file to ph_scene"
         Move-Item -Path $file -Destination .\ph_scene
+	}elseif ($SELAIS -ne $null){
+        if( -Not (Test-Path -Path .\ai_scene ) )
+        {
+            Write-Host "Creating AI Syoujyo Scene Folder"
+            New-Item -ItemType directory -Path .\ai_scene
+        }
+        Write-Host "Moving $file to ai_scene"
+        Move-Item -Path $file -Destination .\ai_scene
+	}elseif ($SELAIO -ne $null){
+        if( -Not (Test-Path -Path .\ai_clothes ) )
+        {
+            Write-Host "Creating AI Syoujyo Clothings Folder"
+            New-Item -ItemType directory -Path .\ai_clothes
+        }
+        Write-Host "Moving $file to ai_clothes"
+        Move-Item -Path $file -Destination .\ai_clothes
+	}elseif ($SELAIH -ne $null){
+        if( -Not (Test-Path -Path .\ai_house ) )
+        {
+            Write-Host "Creating AI Syoujyo Housing Folder"
+            New-Item -ItemType directory -Path .\ai_house
+        }
+        Write-Host "Moving $file to ai_house"
+        Move-Item -Path $file -Destination .\ai_house
 	}elseif ($SELHSS -ne $null){
         if( -Not (Test-Path -Path .\hs_neoscene ) )
         {
@@ -158,6 +186,27 @@ ForEach($file in $files){
         }
         Write-Host "Moving $file to sb_male"
         Move-Item -Path $file -Destination .\sb_male
-    }
+    }elseif ($SELAIC -ne $null){
+        if ($SELKKG -ne $null)
+		{
+            if( -Not (Test-Path -Path .\ai_female ) )
+            {
+                Write-Host "Creating AI Syoujyo Female Folder"
+                New-Item -ItemType directory -Path .\ai_female
+            }
+            Write-Host "Moving $file to ai_female"
+			Move-Item -Path $file -Destination .\ai_female
+		}
+		else
+		{
+            if( -Not (Test-Path -Path .\ai_male ) )
+            {
+                Write-Host "Creating AI Syoujyo Male Folder"
+                New-Item -ItemType directory -Path .\ai_male
+            }
+            Write-Host "Moving $file to ai_male"
+			Move-Item -Path $file -Destination .\ai_male
+		}
+	}
 }
 pause
