@@ -87,8 +87,8 @@ ForEach ($file in $files) {
       Write-Host "Creating Koikatsu Coordinate Folder"
       New-Item -ItemType directory -Path .\kk_coordinate
     }
-    Write-Host "Moving $file to kk_scene"
-    Move-Item -Path $file -Destination .\kk_scene
+    Write-Host "Moving $file to kk_coordinate"
+    Move-Item -Path $file -Destination .\kk_coordinate
   } elseif ($SELECP -ne $null) {
     if ( -Not (Test-Path -Path .\ec_pose ) )
     {
