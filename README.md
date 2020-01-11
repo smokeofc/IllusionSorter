@@ -10,6 +10,7 @@ Sort usermade content made for Illusion Games
 - PlayHome Female Cards
 - PlayHome Male Cards
 - PlayHome Scenes
+- Koikatsu Coordinate Cards
 - Koikatsu Female Cards
 - Koikatsu Male Cards
 - Koikatsu Studio Scenes
