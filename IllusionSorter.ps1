@@ -2,28 +2,28 @@ Set-PSDebug -Off
 
 $files = Get-ChildItem '*.png'
 
-ForEach ($file in $files) {
+$SELPHF = Select-String -Path $file -Pattern "PlayHome_Female"
+$SELPHM = Select-String -Path $file -Pattern "PlayHome_Male"
+$SELPHS = Select-String -Path $file -Pattern "PHStudio"
+$SELHSF = Select-String -Path $file -Pattern "HoneySelectCharaFemale"
+$SELHSM = Select-String -Path $file -Pattern "HoneySelectCharaMale"
+$SELHSS = Select-String -Path $file -Pattern "-neo-"
+$SELKKK = Select-String -Path $file -Pattern "KoiKatuClothes"
+$SELKKC = Select-String -Path $file -Pattern "KoiKatuChara"
+$SELKKS = Select-String -Path $file -Pattern "KStudio"
+$SELECC = Select-String -Path $file -Pattern "EroMakeChara"
+$SELECM = Select-String -Path $file -Pattern "EroMakeMap"
+$SELECP = Select-String -Path $file -Pattern "EroMakePose"
+$SELECS = Select-String -Path $file -Pattern "EroMakeHScene"
+$SELKKG = Select-String -Path $file -Pattern "sex"
+$SELPRF = Select-String -Path $file -Pattern "PremiumResortCharaFemale"
+$SELPRM = Select-String -Path $file -Pattern "PremiumResortCharaMale"
+$SELAIC = Select-String -Path $file -Pattern "AIS_Chara"
+$SELAIS = Select-String -Path $file -Pattern "StudioNEOV2"
+$SELAIH = Select-String -Path $file -Pattern "AIS_Housing"
+$SELAIO = Select-String -Path $file -Pattern "AIS_Clothes"
 
-  $SELPHF = Select-String -Path $file -Pattern "PlayHome_Female"
-  $SELPHM = Select-String -Path $file -Pattern "PlayHome_Male"
-  $SELPHS = Select-String -Path $file -Pattern "PHStudio"
-  $SELHSF = Select-String -Path $file -Pattern "HoneySelectCharaFemale"
-  $SELHSM = Select-String -Path $file -Pattern "HoneySelectCharaMale"
-  $SELHSS = Select-String -Path $file -Pattern "-neo-"
-  $SELKKK = Select-String -Path $file -Pattern "KoiKatuClothes"
-  $SELKKC = Select-String -Path $file -Pattern "KoiKatuChara"
-  $SELKKS = Select-String -Path $file -Pattern "KStudio"
-  $SELECC = Select-String -Path $file -Pattern "EroMakeChara"
-  $SELECM = Select-String -Path $file -Pattern "EroMakeMap"
-  $SELECP = Select-String -Path $file -Pattern "EroMakePose"
-  $SELECS = Select-String -Path $file -Pattern "EroMakeHScene"
-  $SELKKG = Select-String -Path $file -Pattern "sex"
-  $SELPRF = Select-String -Path $file -Pattern "PremiumResortCharaFemale"
-  $SELPRM = Select-String -Path $file -Pattern "PremiumResortCharaMale"
-  $SELAIC = Select-String -Path $file -Pattern "AIS_Chara"
-  $SELAIS = Select-String -Path $file -Pattern "StudioNEOV2"
-  $SELAIH = Select-String -Path $file -Pattern "AIS_Housing"
-  $SELAIO = Select-String -Path $file -Pattern "AIS_Clothes"
+ForEach ($file in $files) {
     
   if ($SELECS -ne $null) {
     if ( -Not (Test-Path -Path .\ec_scene ) )
