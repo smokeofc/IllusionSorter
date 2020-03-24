@@ -4,7 +4,8 @@ $files = Get-ChildItem '*.png'
 
 ForEach ($file in $files) {
 
-  $SELAA2 = Select-String -Path $file -Pattern (0x81,0x79,0x83,0x47,0x83,0x66,0x83,0x42,0x83,0x62,0x83,0x67,0x81,0x7A) #ЃyѓGѓfѓBѓbѓgЃz
+  #Collides with scenes, needs better check mechanism
+  #$SELAA2 = Select-String -Path $file -Pattern (0x81,0x79,0x83,0x47,0x83,0x66,0x83,0x42,0x83,0x62,0x83,0x67,0x81,0x7A) #ЃyѓGѓfѓBѓbѓgЃz
   $SELPHF = Select-String -Path $file -Pattern "PlayHome_Female"
   $SELPHM = Select-String -Path $file -Pattern "PlayHome_Male"
   $SELPHS = Select-String -Path $file -Pattern "PHStudio"
@@ -26,15 +27,16 @@ ForEach ($file in $files) {
   $SELAIH = Select-String -Path $file -Pattern "AIS_Housing"
   $SELAIO = Select-String -Path $file -Pattern "AIS_Clothes"
 
-  if ($SELAA2 -ne $null) {
-    if ( -Not (Test-Path -Path .\aa2_chara ) )
-    {
-      Write-Host "Creating Artificial Academy 2 Character Folder"
-      New-Item -ItemType directory -Path .\aa2_chara
-    }
-    Write-Host "Moving $file to aa2_chara"
-    Move-Item -Path $file -Destination .\aa2_chara
-  } elseif ($SELECS -ne $null) {
+  #if ($SELAA2 -ne $null) {
+  #  if ( -Not (Test-Path -Path .\aa2_chara ) )
+  #  {
+  #    Write-Host "Creating Artificial Academy 2 Character Folder"
+  #    New-Item -ItemType directory -Path .\aa2_chara
+  #  }
+  #  Write-Host "Moving $file to aa2_chara"
+  #  Move-Item -Path $file -Destination .\aa2_chara
+  #} else
+  if ($SELECS -ne $null) {
     if ( -Not (Test-Path -Path .\ec_scene ) )
     {
       Write-Host "Creating Emotion Creators Scene Folder"
