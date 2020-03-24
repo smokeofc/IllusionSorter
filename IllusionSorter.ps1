@@ -4,6 +4,7 @@ $files = Get-ChildItem '*.png'
 
 ForEach ($file in $files) {
 
+  $SELAA2 = Select-String -Path $file -Pattern (0x81,0x79,0x83,0x47,0x83,0x66,0x83,0x42,0x83,0x62,0x83,0x67,0x81,0x7A) #ЃyѓGѓfѓBѓbѓgЃz
   $SELPHF = Select-String -Path $file -Pattern "PlayHome_Female"
   $SELPHM = Select-String -Path $file -Pattern "PlayHome_Male"
   $SELPHS = Select-String -Path $file -Pattern "PHStudio"
@@ -17,7 +18,7 @@ ForEach ($file in $files) {
   $SELECM = Select-String -Path $file -Pattern "EroMakeMap"
   $SELECP = Select-String -Path $file -Pattern "EroMakePose"
   $SELECS = Select-String -Path $file -Pattern "EroMakeHScene"
-  $SELKKG = Select-String -Path $file -Pattern "sex"
+  $SELKKG = Select-String -Path $file -Pattern (0x73,0x65,0x78,0x01) #s e x 0x01 (0x00 - male, 0x01 - female)
   $SELPRF = Select-String -Path $file -Pattern "PremiumResortCharaFemale"
   $SELPRM = Select-String -Path $file -Pattern "PremiumResortCharaMale"
   $SELAIC = Select-String -Path $file -Pattern "AIS_Chara"
@@ -25,7 +26,15 @@ ForEach ($file in $files) {
   $SELAIH = Select-String -Path $file -Pattern "AIS_Housing"
   $SELAIO = Select-String -Path $file -Pattern "AIS_Clothes"
 
-  if ($SELECS -ne $null) {
+  if ($SELAA2 -ne $null) {
+    if ( -Not (Test-Path -Path .\aa2_chara ) )
+    {
+      Write-Host "Creating Artificial Academy 2 Character Folder"
+      New-Item -ItemType directory -Path .\aa2_chara
+    }
+    Write-Host "Moving $file to aa2_chara"
+    Move-Item -Path $file -Destination .\aa2_chara
+  } elseif ($SELECS -ne $null) {
     if ( -Not (Test-Path -Path .\ec_scene ) )
     {
       Write-Host "Creating Emotion Creators Scene Folder"
