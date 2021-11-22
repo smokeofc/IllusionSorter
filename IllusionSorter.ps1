@@ -10,6 +10,7 @@ ForEach($file in $files){
     $SELHSF = Select-String -Path $file -Pattern "HoneySelectCharaFemale"
     $SELHSM = Select-String -Path $file -Pattern "HoneySelectCharaMale"
 	$SELHSS = Select-String -Path $file -Pattern "-neo-"
+	$SELKKSS = Select-String -Path $file -Pattern "KoiKatuCharaSun"
 	$SELKKC = Select-String -Path $file -Pattern "KoiKatuChara"
 	$SELKKS = Select-String -Path $file -Pattern "KStudio"
 	$SELECC = Select-String -Path $file -Pattern "EroMakeChara"
@@ -128,6 +129,27 @@ ForEach($file in $files){
         }
         Write-Host "Moving $file to hs_male"
         Move-Item -Path $file -Destination .\hs_male
+    }elseif ($SELKKSS -ne $null){
+        if ($SELKKG -ne $null)
+		{
+            if( -Not (Test-Path -Path .\kks_female ) )
+            {
+                Write-Host "Creating Koikatsu Sunshine Female Folder"
+                New-Item -ItemType directory -Path .\kks_female
+            }
+            Write-Host "Moving $file to kks_female"
+			Move-Item -Path $file -Destination .\kks_female
+		}
+		else
+		{
+            if( -Not (Test-Path -Path .\kks_male ) )
+            {
+                Write-Host "Creating Koikatsu Sunshine Male Folder"
+                New-Item -ItemType directory -Path .\kks_male
+            }
+            Write-Host "Moving $file to kks_male"
+			Move-Item -Path $file -Destination .\kks_male
+		}
     }elseif ($SELKKC -ne $null){
         if ($SELKKG -ne $null)
 		{
